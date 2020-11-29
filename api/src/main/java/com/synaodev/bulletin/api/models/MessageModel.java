@@ -59,6 +59,9 @@ public class MessageModel {
 	public void setParent(MessageModel parent) {
 		this.parent = parent;
 	}
+	public boolean addChild(MessageModel child) {
+		return children.add(child);
+	}
 	public Long getId() {
 		return id;
 	}

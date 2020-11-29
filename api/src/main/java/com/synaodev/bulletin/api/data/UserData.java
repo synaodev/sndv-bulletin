@@ -1,11 +1,11 @@
-package com.synaodev.bulletin.api.dtos;
+package com.synaodev.bulletin.api.data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.synaodev.bulletin.api.models.UserModel;
 
-public class UserDTO {
+public class UserData {
 	private long id;
 	private String handle;
 	private String email;
@@ -30,8 +30,8 @@ public class UserDTO {
 	public int getMessageCount() {
 		return messageCount;
 	}
-	static public UserDTO generate(UserModel model) {
-		UserDTO result = new UserDTO();
+	static public UserData generate(UserModel model) {
+		UserData result = new UserData();
 		if (!model.isNew()) {
 			result.id = model.getId().longValue();
 			result.handle = model.getHandle();
@@ -42,10 +42,10 @@ public class UserDTO {
 		}
 		return result;
 	}
-	static public List<UserDTO> generate(List<UserModel> models) {
-		List<UserDTO> result = new ArrayList<UserDTO>();
+	static public List<UserData> generate(List<UserModel> models) {
+		List<UserData> result = new ArrayList<UserData>();
 		for (UserModel m : models) {
-			result.add(UserDTO.generate(m));
+			result.add(UserData.generate(m));
 		}
 		return result;
 	}

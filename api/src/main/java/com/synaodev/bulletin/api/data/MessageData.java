@@ -1,4 +1,4 @@
-package com.synaodev.bulletin.api.dtos;
+package com.synaodev.bulletin.api.data;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.synaodev.bulletin.api.models.MessageModel;
 
-public class MessageDTO {
+public class MessageData {
 	private long id;
 	private String content;
 	private long userId;
@@ -35,8 +35,8 @@ public class MessageDTO {
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-	static public MessageDTO generate(MessageModel model) {
-		MessageDTO result = new MessageDTO();
+	static public MessageData generate(MessageModel model) {
+		MessageData result = new MessageData();
 		if (!model.isNew()) {
 			result.id = model.getId().longValue();
 			result.content = model.getContent();
@@ -50,10 +50,10 @@ public class MessageDTO {
 		}
 		return result;
 	}
-	static public List<MessageDTO> generate(List<MessageModel> models) {
-		List<MessageDTO> result = new ArrayList<MessageDTO>();
+	static public List<MessageData> generate(List<MessageModel> models) {
+		List<MessageData> result = new ArrayList<MessageData>();
 		for (MessageModel m : models) {
-			result.add(MessageDTO.generate(m));
+			result.add(MessageData.generate(m));
 		}
 		return result;
 	}

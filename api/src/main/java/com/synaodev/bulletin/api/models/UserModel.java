@@ -65,6 +65,9 @@ public class UserModel {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public boolean addMessage(MessageModel message) {
+		return messages.add(message);
+	}
 	public Long getId() {
 		return id;
 	}

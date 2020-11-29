@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.synaodev.bulletin.api.dtos.UserDTO;
+import com.synaodev.bulletin.api.data.UserData;
 import com.synaodev.bulletin.api.forms.LoginForm;
 import com.synaodev.bulletin.api.forms.RegisterForm;
 import com.synaodev.bulletin.api.models.UserModel;
@@ -24,30 +24,30 @@ public class UserController {
 		this.userService = userService;
 	}
 	@GetMapping("/api/user")
-	public List<UserDTO> getAll() {
+	public List<UserData> getAll() {
 		List<UserModel> models = userService.findAll();
-		return UserDTO.generate(models);
+		return UserData.generate(models);
 	}
 	@GetMapping("/api/user/id/{id}")
-	public UserDTO getById(@PathVariable Long id) {
+	public UserData getById(@PathVariable Long id) {
 		UserModel model = userService.read(id);
 		if (model != null) {
-			return UserDTO.generate(model);
+			return UserData.generate(model);
 		}
 		return null;
 	}
 	@GetMapping("/api/user/handle/{handle}")
-	public UserDTO getByHandle(@PathVariable String handle) {
+	public UserData getByHandle(@PathVariable String handle) {
 		UserModel model = userService.findByHandle(handle);
-		return UserDTO.generate(model);
+		return UserData.generate(model);
 	}
 	@GetMapping("/api/user/email/{email}")
-	public UserDTO getByEmail(@PathVariable String email) {
+	public UserData getByEmail(@PathVariable String email) {
 		UserModel model = userService.findByEmail(email);
-		return UserDTO.generate(model);
+		return UserData.generate(model);
 	}
 	@PostMapping("/api/user/register")
-	public UserDTO register(@Valid @RequestBody RegisterForm form) {
+	public UserData register(@Valid @RequestBody RegisterForm form) {
 		UserModel model = new UserModel(
 			form.getHandle(),
 			form.getEmail(),
@@ -56,10 +56,10 @@ public class UserController {
 			form.getLastName()
 		);
 		model = userService.create(model);
-		return UserDTO.generate(model);
+		return UserData.generate(model);
 	}
 	@PostMapping("/api/user/login")
-	public UserDTO login(@Valid @RequestBody LoginForm form) {
+	public UserData login(@Valid @RequestBody LoginForm form) {
 		UserModel model = userService.findByEmail(form.getEmail());
 		if (model == null) {
 			return null;
@@ -67,7 +67,7 @@ public class UserController {
 		if (!form.getPassword().equals(model.getPassword())) {
 			return null;
 		}
-		return UserDTO.generate(model);
+		return UserData.generate(model);
 	}
 	@DeleteMapping("/api/user/{id}")
 	public boolean remove(@PathVariable Long id) {
