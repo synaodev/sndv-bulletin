@@ -1,4 +1,4 @@
-# Tyler Cadena's Revature Bulletin Project
+# Tyler Cadena's Bulletin Project
 
 ## Running Locally
 * Initialize mysql instance using one of two ways:
