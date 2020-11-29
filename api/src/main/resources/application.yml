@@ -1,0 +1,16 @@
+# Settings
+
+spring:
+  datasource:
+    platform: 'mysql'
+    url: 'jdbc:mysql://localhost:3306/bulletin'
+    username: 'spring'
+    password: 'password'
+    data: 'classpath:data.sql'
+    initialization-mode: 'always'
+  jpa:
+    hibernate:
+      ddl-auto: 'update'
+
+server:
+  port: 5000

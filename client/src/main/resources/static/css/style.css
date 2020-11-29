@@ -1,0 +1,15 @@
+.blue {
+	color: blue;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.mssg-parent {
+	margin-left: 20px;
+}
+
+.mssg-child {
+	margin-left: 40px;
+}
